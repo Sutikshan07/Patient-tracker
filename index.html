@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare - Patient Medicine & Appointment Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">🏥 MediCare</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('register')">Register</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('login')">Login</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('booking')">Book Appointment</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('appointments')">My Appointments</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('prescriptions')">Prescriptions</a></li>
+            </ul>
+            <div class="burger" id="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Homepage -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Welcome to MediCare</h1>
+                <p>Your comprehensive solution for managing appointments and prescriptions</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card" onclick="showPage('register')">
+                    <div class="feature-icon">👤</div>
+                    <h3>Patient Registration</h3>
+                    <p>Create your account to access all healthcare services and manage your medical information securely.</p>
+                </div>
+                
+                <div class="feature-card" onclick="showPage('booking')">
+                    <div class="feature-icon">📅</div>
+                    <h3>Book Appointments</h3>
+                    <p>Schedule appointments with your preferred doctors at convenient times that work for you.</p>
+                </div>
+                
+                <div class="feature-card" onclick="showPage('appointments')">
+                    <div class="feature-icon">🗓️</div>
+                    <h3>View Appointments</h3>
+                    <p>Keep track of all your scheduled appointments and receive timely reminders.</p>
+                </div>
+                
+                <div class="feature-card" onclick="showPage('prescriptions')">
+                    <div class="feature-icon">💊</div>
+                    <h3>Manage Prescriptions</h3>
+                    <p>Access your prescriptions, track medications, and set refill reminders.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Registration Form -->
+        <div id="register" class="page">
+            <div class="form-container">
+                <h2>Patient Registration</h2>
+                <div id="register-alert" class="alert"></div>
+                
+                <form id="register-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="1" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login" class="page">
+            <div class="form-container">
+                <h2>Patient Login</h2>
+                <div id="login-alert" class="alert"></div>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Login</button>
+                    <a href="#" class="btn btn-secondary" onclick="showPage('register')" style="margin-left: 1rem;">Create Account</a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Appointment Booking Form -->
+        <div id="booking" class="page">
+            <div class="form-container">
+                <h2>Book Appointment</h2>
+                <div id="booking-alert" class="alert"></div>
+                
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="doctor">Select Doctor</label>
+                        <select id="doctor" name="doctor" required>
+                            <option value="">Choose a Doctor</option>
+                            <option value="Dr. Smith - Cardiology">Dr. Smith - Cardiology</option>
+                            <option value="Dr. Johnson - Dermatology">Dr. Johnson - Dermatology</option>
+                            <option value="Dr. Williams - Pediatrics">Dr. Williams - Pediatrics</option>
+                            <option value="Dr. Brown - Orthopedics">Dr. Brown - Orthopedics</option>
+                            <option value="Dr. Davis - Neurology">Dr. Davis - Neurology</option>
+                            <option value="Dr. Miller - General Medicine">Dr. Miller - General Medicine</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointmentDate">Date</label>
+                            <input type="date" id="appointmentDate" name="appointmentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointmentTime">Time</label>
+                            <select id="appointmentTime" name="appointmentTime" required>
+                                <option value="">Select Time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason" name="reason" rows="3" placeholder="Describe your symptoms or reason for the appointment"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- View Appointments -->
+        <div id="appointments" class="page">
+            <h2>My Appointments</h2>
+            <div class="table-container">
+                <table id="appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-tbody">
+                        <tr>
+                            <td>2025-06-15</td>
+                            <td>10:00 AM</td>
+                            <td>Dr. Smith - Cardiology</td>
+                            <td>Regular checkup</td>
+                            <td><span style="color: #28a745; font-weight: bold;">Confirmed</span></td>
+                            <td><button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Reschedule</button></td>
+                        </tr>
+                        <tr>
+                            <td>2025-06-20</td>
+                            <td>02:00 PM</td>
+                            <td>Dr. Johnson - Dermatology</td>
+                            <td>Skin examination</td>
+                            <td><span style="color: #ffc107; font-weight: bold;">Pending</span></td>
+                            <td><button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Cancel</button></td>
+                        </tr>
+                        <tr>
+                            <td>2025-06-08</td>
+                            <td>11:00 AM</td>
+                            <td>Dr. Williams - Pediatrics</td>
+                            <td>Follow-up visit</td>
+                            <td><span style="color: #6c757d; font-weight: bold;">Completed</span></td>
+                            <td><button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Report</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Prescription Page -->
+        <div id="prescriptions" class="page">
+            <div class="prescription-header">
+                <h2>My Prescriptions</h2>
+                <p>Manage your medications and track your prescriptions</p>
+            </div>
+
+            <div class="prescription-item">
+                <div class="medication-name">Lisinopril 10mg</div>
+                <div class="medication-details"><strong>Prescribed by:</strong> Dr. Smith - Cardiology</div>
+                <div class="medication-details"><strong>Date:</strong> June 5, 2025</div>
+                <div class="medication-details"><strong>Dosage:</strong> Take 1 tablet daily in the morning</div>
+                <div class="medication-details"><strong>Refills:</strong> 2 remaining</div>
+                <div class="medication-details"><strong>Notes:</strong> Monitor blood pressure regularly</div>
+            </div>
+
+            <div class="prescription-item">
+                <div class="medication-name">Metformin 500mg</div>
+                <div class="medication-details"><strong>Prescribed by:</strong> Dr. Miller - General Medicine</div>
+                <div class="medication-details"><strong>Date:</strong> May 28, 2025</div>
+                <div class="medication-details"><strong>Dosage:</strong> Take 1 tablet twice daily with meals</div>
+                <div class="medication-details"><strong>Refills:</strong> 1 remaining</div>
+                <div class="medication-details"><strong>Notes:</strong> Check blood sugar levels weekly</div>
+            </div>
+
+            <div class="prescription-item">
+                <div class="medication-name">Omeprazole 20mg</div>
+                <div class="medication-details"><strong>Prescribed by:</strong> Dr. Johnson - Gastroenterology</div>
+                <div class="medication-details"><strong>Date:</strong> May 20, 2025</div>
+                <div class="medication-details"><strong>Dosage:</strong> Take 1 capsule daily before breakfast</div>
+                <div class="medication-details"><strong>Refills:</strong> 3 remaining</div>
+                <div class="medication-details"><strong>Notes:</strong> Continue for 8 weeks, then reassess symptoms</div>
+            </div>
+
+            <button class="btn" style="margin-top: 2rem;">Request Prescription Refill</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+            <p>&copy; 2025 MediCare. All rights reserved. | Your health, our priority.</p>
+        </div>
+    </footer>
+    
+
+    </body>
+    <script src="script.js"></script>
+</html>
+        
